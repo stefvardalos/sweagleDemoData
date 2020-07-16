@@ -1,0 +1,86 @@
+{
+  "name": "sweaglecli",
+  "version": "1.1.0",
+  "description": "Sweagle CLI Client",
+  "main": "dist/sweagle.js",
+  "bin": {
+    "sweagle": "dist/sweagle.js"
+  },
+  "pkg": {
+    "assets": [
+      "./node_modules/figlet/fonts/"
+    ]
+  },
+  "scripts": {
+    "start": "npm run build && npm run sweagle",
+    "build": "npm run build-ts",
+    "sweagle": "cd dist && node sweagle",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "package": "pkg -o ./packages/sweagle package.json -t linux,macos,win",
+    "assets": "copyfiles -u 2 src/assets/* dist/assets/",
+    "buildpkg": "npm run build-ts && npm run assets && npm run package && npm run zip",
+    "zip": "node node_scripts/distZip.js",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "author": "",
+  "environment": "PRD",
+  "dependencies": {
+    "@octokit/rest": "^17.0.0",
+    "@types/cryptr": "^4.0.0",
+    "@types/inquirer": "0.0.43",
+    "@types/js-base64": "^2.3.1",
+    "@types/lowdb": "^1.0.6",
+    "asciify-image": "0.1.6",
+    "axios": "^0.18.0",
+    "boxen": "^3.0.0",
+    "chalk": "^2.4.1",
+    "chalk-pipe": "^2.0.0",
+    "cli-table3": "^0.5.1",
+    "commander": "5.1.0",
+    "cryptr": "5.0.0",
+    "dotenv": "^6.1.0",
+    "download": "^7.1.0",
+    "ervy": "^1.0.4",
+    "figlet": "^1.2.1",
+    "fs-extra": "^7.0.1",
+    "https-proxy-agent": "^5.0.0",
+    "hyperlinker": "^1.0.0",
+    "inquirer": "^6.2.1",
+    "inquirer-autocomplete-prompt": "^1.0.1",
+    "inquirer-checkbox-plus-prompt": "^1.0.1",
+    "is-reachable": "^3.1.0",
+    "js-base64": "^2.5.2",
+    "jsome": "^2.5.0",
+    "json-diff": "^0.5.4",
+    "jsondiffpatch": "^0.4.1",
+    "lowdb": "^1.0.0",
+    "moment": "^2.24.0",
+    "ora": "^3.1.0",
+    "os-name": "^3.0.0",
+    "prettyjson": "^1.2.1",
+    "progress": "^2.0.3",
+    "rxjs": "^6.4.0",
+    "safe-eval": "^0.4.1",
+    "supports-color": "^7.1.0",
+    "supports-hyperlinks": "^1.0.1",
+    "temp-dir": "^1.0.0",
+    "unique-filename": "^1.1.1",
+    "winston": "^3.2.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
+    "bestzip": "^2.1.2",
+    "copyfiles": "^2.1.0",
+    "mkdirp": "^0.5.1",
+    "pkg": "4.4.8",
+    "shelljs": "^0.8.3",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  },
+  "resolutions": {
+    "couleurs": "5.2.0"
+  }
+}
